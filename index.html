@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Weather App.</title>
 </head>
-<body>
+
+<body onload="getlocation() ">
+     <!-- <img src="./images/dark.jpg" alt = "picture"> -->
+    <section class="Dark">
+       
+        <header class="Primary-header">
+            <nav class="Primary-nav">
+                <ul class="Primary-nav-list">
+                    <input type="search" id="Primary-search" class="search-query">
+                    <input type="submit" class="submit-btn" onclick="getInformation()" value="search">
+                </ul>
+            </nav>
+
+        </header>
+
+
+        <section class="main">
+
+            <div class="City-name" id="Current-city"></div>
+            <div class="Temp" id="Current-temp"></div>
+            <span id ="stamp"></span>
+            <div class="Humidity" id="Current-humidity"></div>
+            <div class="Wind" id="Current-wind"></div>
+            <div class="Extras" id="Description"></div>
+
+
+
+        </section>
+
+        <h2 class="Heading">Future Forecast.</h2>
+        <section class="Primary-Section">
+<div class="date" id ="Future-Date"> </div>
+<div class="Temp" id="Future-temp"></div>
+<div class="Humidity" id="Future-humidity"></div>
+<div class="Wind" id="Future-wind"></div>
+<div class="Extras" id="Description"></div>
+
+
+
+        </section>
 
 
 
@@ -17,10 +57,14 @@
 
 
 
+    </section>
 
 
-
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"
+        integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/app.js"></script>
+
 </body>
+
 </html>
