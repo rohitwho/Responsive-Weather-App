@@ -1,14 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Neucha:regular" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css">
     <title>Weather App.</title>
 </head>
+
 <body>
 
+    <section  class="Dark" Data-mode="false" >
+
+        <header class="Primary-header">
+            <nav class="Primary-nav">
+                <ul class="Primary-nav-list">
+                    <input type="search" id="Primary-search" class="search-query">
+                    <div class="Recent">
+                        
+                    </div>
+                    <input type="submit" class="submit-btn" onclick="getInformation()" value="search">
+                </ul>
+            </nav>
+
+        </header>
+
+
+        <section class="main">
+
+            <div class="City-name" id="Current-city"></div>
+            <div class="Temp" id="Current-temp"></div>
+            <span id="stamp"></span>
+            <div class="Humidity" id="Current-humidity"></div>
+            <div class="Wind" id="Current-wind"></div>
+            <div class="Extras" id="Description"></div>
+
+
+
+        </section>
+
+        <h2 class="Heading"></h2>
+        <section class="Sections-together">
+        <section class="Primary-Section0">
+        
+        </section>
+        <section class="Primary-Section1">
+            
+        </section>
+        <section class="Primary-Section2">
+            
+        </section>
+        <section class="Primary-Section3">
+            
+        </section>
+        <section class="Primary-Section4">
+            
+        </section>
+    </section>
+      
 
 
 
@@ -17,10 +68,14 @@
 
 
 
+    </section>
 
 
-
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"
+        integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/app.js"></script>
+
 </body>
+
 </html>
