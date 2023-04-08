@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Neucha:regular" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css">
     <title>Weather App.</title>
 </head>
 
-<body onload="getlocation() ">
-     <!-- <img src="./images/dark.jpg" alt = "picture"> -->
-    <section class="Dark">
-       
+<body>
+
+    <section  class="Dark" Data-mode="false" >
+
         <header class="Primary-header">
             <nav class="Primary-nav">
                 <ul class="Primary-nav-list">
                     <input type="search" id="Primary-search" class="search-query">
+                    <div class="Recent">
+                        
+                    </div>
                     <input type="submit" class="submit-btn" onclick="getInformation()" value="search">
                 </ul>
             </nav>
@@ -28,7 +32,7 @@
 
             <div class="City-name" id="Current-city"></div>
             <div class="Temp" id="Current-temp"></div>
-            <span id ="stamp"></span>
+            <span id="stamp"></span>
             <div class="Humidity" id="Current-humidity"></div>
             <div class="Wind" id="Current-wind"></div>
             <div class="Extras" id="Description"></div>
@@ -37,18 +41,25 @@
 
         </section>
 
-        <h2 class="Heading">Future Forecast.</h2>
-        <section class="Primary-Section">
-<div class="date" id ="Future-Date"> </div>
-<div class="Temp" id="Future-temp"></div>
-<div class="Humidity" id="Future-humidity"></div>
-<div class="Wind" id="Future-wind"></div>
-<div class="Extras" id="Description"></div>
-
-
-
+        <h2 class="Heading"></h2>
+        <section class="Sections-together">
+        <section class="Primary-Section0">
+        
         </section>
-
+        <section class="Primary-Section1">
+            
+        </section>
+        <section class="Primary-Section2">
+            
+        </section>
+        <section class="Primary-Section3">
+            
+        </section>
+        <section class="Primary-Section4">
+            
+        </section>
+    </section>
+      
 
 
 
