@@ -1,23 +1,9 @@
 
-const currentTemp = document.getElementById("Current-temp")
-const description = document.getElementById("Description")
-const getWind = document.getElementById("Current-wind");
-const getHumidity = document.getElementById("Current-humidity");
-const futureDate = document.getElementById("Future-Date");
-const futureTemp = document.getElementById("Future-temp");
-const futureWind = document.getElementById("Future-wind");
-const futureHumidity = document.getElementById("Future-humidity");
-const icon = document.getElementById("stamp");
-const currentCity = document.getElementById("Current-city");
 const showDate = dayjs().format('DD/MMM/YY');
 const search = document.getElementById("Primary-search").value;
 const heading =document.querySelector(".Heading")
-const section0 = document.querySelector(".Primary-Section0")
-const section1 = document.querySelector(".Primary-Section1");
-const section2 = document.querySelector(".Primary-Section2")
-const section3 = document.querySelector(".Primary-Section3")
-const section4 = document.querySelector(".Primary-Section4")
-const push = document.getElementById(".Recent")
+const section0 = document.querySelector(".Primary-Section")
+  
 
 
 
@@ -25,114 +11,156 @@ const push = document.getElementById(".Recent")
 const hour = dayjs().hour();
 const modeSel = document.querySelector(".Dark");
 var selectMode = modeSel.getAttribute("Data-mode");
-if(hour <= 17){
+if(hour <= 1){
 
     modeSel.setAttribute("Data-mode","true");
 };
 
 
 ///////////////////////////////////////////////////////////////////////
+function showRecent(){
+    var push = document.querySelector(".Recent"); 
+    push.setAttribute("Data-Visible","true");
+}
+
+function hideAgain(){
+    var push = document.querySelector(".Recent");
+    push.setAttribute("Data-Visible","false");
+}
 const key = "searchHistory";
 let searchHistory = JSON.parse(localStorage.getItem(key)) || [];
 
 // add the new search value to the search history array
+
 searchHistory.push(search.toLowerCase());
 
 // store the updated search history array in local storage
 localStorage.setItem(key, JSON.stringify(searchHistory));
-var recentSearch = document.createElement("li");
-console.log(recentSearch);
+
+const intoThis = document.getElementById("Show-History");
+
+
+searchHistory.forEach(element => {
+    let recentSearch = document.createElement("a");
+    recentSearch.classList.add("Dropdown")
+recentSearch.textContent = searchHistory[0];
+    
+intoThis.appendChild(recentSearch);
+});
+
+// for( var i = 0; i <searchHistory.length; i++);
+// console.log(searchHistory);
 
 
 
-// recentSearch.innerHTML = searchHistory;
-// push.appendChild(recentSearch);
+// // create a new list item with the search value and append it to the Recent element
+// let recentSearch = document.createElement("li");
+// recentSearch.classList.add("Dropdown")
+// recentSearch.textContent = searchHistory;
+
+// intoThis.appendChild(recentSearch);
 
 
-console.log(searchHistory); // outputs the search history array
 
 
-
-
-
-
+//how about this iuse add event listner in the input it will keep track of the input and feed it to the search variable and when the serch gets clicked it will show th information.
 
 
 var apiKey = 'd5cd8cdd4dbe22cb39d5685c1ac0118c';
 
-var city = search;
+
 
 
 function getInformation() {
+    document.querySelector(".main").innerHTML="";
+    document.querySelector(".Heading").innerHTML="";
+    document.querySelector(".Primary-Section").innerHTML="";
+    let city=search;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
   
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
-   
-            currentCity.innerHTML = `${data.name} (${showDate})`;
-            currentTemp.innerHTML += `<p>Temp: ${Math.floor(data.main.temp)}°C</p>`;
-            getWind.innerHTML += `<p> Wind: ${data.wind.speed} MPH</P>`;
-            getHumidity.innerHTML += `<p>Humidity: ${data.main.humidity} %</p>`;
-            description.innerHTML += `<p>${data.weather[0].description}</p>`;
-            heading.innerHTML += `<p>5 Day Forecast For ${data.name}</p> `;
+          if(data.cod === 200){
 
 
-        });
+   let currentCity = document.createElement("div");
+   currentCity.classList.add("city-name");
+
+currentCity.innerHTML = `<h1>${data.name} (${showDate})</h1>`;
+
+let weatherInfo = document.createElement("div");
+
+let tempEl = document.createElement("p")
+
+
+tempEl.textContent = `Temp: ${Math.floor(data.main.temp)}°C`;
+
+let windEl = document.createElement("p");
+
+windEl.textContent = `Wind: ${Math.floor(data.wind.speed)} m/s`;
+
+let humidityEl = document.createElement("p");
+
+humidityEl.textContent = `Humidity: ${Math.floor(data.main.humidity)} %`;
+
+let description = document.createElement("p");
+
+description.textContent = ` ${data.weather[0].description}`;
+
+
+
+weatherInfo.appendChild(tempEl);
+weatherInfo.appendChild(windEl);
+weatherInfo.appendChild(humidityEl);
+weatherInfo.appendChild(description);
+currentCity.appendChild(weatherInfo);
+document.querySelector(".main").appendChild(currentCity);
+
+        
+
+          }
+        })
+
+
+
+
+
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`)
         .then(function (response) {
           return response.json();
       }).then(function (data){
           console.log(data);
+          document.querySelector(".Heading")
+          let heading = document.createElement("div");
+   
 
-var createEl = document.createElement("div");
-createEl.className = "Primary-Section";
-createEl.innerHTML += `<p>${data.list[2].dt_txt}</p>`;
-createEl.innerHTML += `<p>Temp: ${Math.floor(data.list[2].main.temp)}°C</p>`;
-createEl.innerHTML += `<p>Humidity: ${data.list[2].main.humidity}%</p>`;
-createEl.innerHTML += `<p>Wind: ${data.list[2].wind.speed} MPH</p>`;
-section0.appendChild(createEl);
-/////////////////////////////////////////////////////         
-var createDiv = document.createElement("div");
-createDiv.className = "Primary-Section";
-createDiv.innerHTML += `<p>${data.list[10].dt_txt}</p>`;
-createDiv.innerHTML += `<p>Temp: ${Math.floor(data.list[10].main.temp)}°C</p>`;
-createDiv.innerHTML += `<p>Humidity: ${data.list[10].main.humidity}%</p>`;
-createDiv.innerHTML += `<p>Wind: ${data.list[10].wind.speed} MPH</p>`;
-section1.appendChild(createDiv);
+heading.textContent = `Weather for :  ${city}`;
+document.querySelector(".Heading").appendChild(heading);
 
- ////////////////////////////////////////////////////////////
- var createOne = document.createElement("div");
- createOne.className = "Primary-Section";
- createOne.innerHTML += `<p>${data.list[18].dt_txt}</p>`;
- createOne.innerHTML += `<p>Temp: ${Math.floor(data.list[18].main.temp)}°C</p>`;
- createOne.innerHTML += `<p>Humidity: ${data.list[18].main.humidity}%</p>`;
- createOne.innerHTML += `<p>Wind: ${data.list[18].wind.speed} MPH</p>`;
- section2.appendChild(createOne);
- ///////////////////////////////////////////////////
+for(var i = 0; i< data.list.length; i++){
+    // console.log(data.list[i]);
+    if(data.list[i].dt_txt.split(" ").pop()=== "12:00:00"){
+        
+        var createEl = document.createElement("div");
+        createEl.className = "Primary-Row";
+        createEl.innerHTML += `<p>${data.list[i].dt_txt}</p>`;
+        createEl.innerHTML += `<p>Temp: ${Math.floor(data.list[i].main.temp)}°C</p>`;
+        createEl.innerHTML += `<p>Humidity: ${data.list[i].main.humidity}%</p>`;
+        createEl.innerHTML += `<p>Wind: ${data.list[i].wind.speed} MPH</p>`;
+        section0.appendChild(createEl);
+    }
+
+}
+      
 
 
- var createAnother = document.createElement("div");
-createAnother.className = "Primary-Section";
-createAnother.innerHTML += `<p>${data.list[26].dt_txt}</p>`;
-createAnother.innerHTML += `<p>Temp: ${Math.floor(data.list[26].main.temp)}°C</p>`;
-createAnother.innerHTML += `<p>Humidity: ${data.list[26].main.humidity}%</p>`;
-createAnother.innerHTML += `<p>Wind: ${data.list[26].wind.speed} MPH</p>`;
-section3.appendChild(createAnother);
 
-
-///////////////////////////////////////////////
-var createAnotherOne = document.createElement("div");
-createAnotherOne.className = "Primary-Section";
-createAnotherOne.innerHTML += `<p>${data.list[34].dt_txt}</p>`;
-createAnotherOne.innerHTML += `<p>Temp: ${Math.floor(data.list[34].main.temp)}°C</p>`;
-createAnotherOne.innerHTML += `<p>Humidity: ${data.list[34].main.humidity}%</p>`;
-createAnotherOne.innerHTML += `<p>Wind: ${data.list[34].wind.speed} MPH</p>`;
-section4.appendChild(createAnotherOne);
 
       });
+   
+      
 }
 
 
