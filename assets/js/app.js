@@ -35,7 +35,7 @@ function getInformation() {
   const key = "searchHistory";
   let searchHistory = JSON.parse(localStorage.getItem(key)) || [];
 
-  // Set maximum limit of 10 search history items
+
   const maxLimit = 10;
 
   // Add the new search value to the search history array
