@@ -7,15 +7,29 @@ html {
   scroll-behavior: smooth;
   font-family: Helvetica, sans-serif
 }
+/* li.Dropdown{
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  align-items: flex-end;
+  text-transform: uppercase;
+
+} */
+/* .Dropdown li{
+  display: flex;
+  justify-content: center;
+} */
+
 
 .Dark {
   background-image: url("/images/Light-Mode.jpg");
   background-repeat: no-repeat;
-
+  background-size: cover;
   object-fit: cover;
+  color: rgb(0, 0, 0);
+  min-height: 100vh;
+  min-width: 100vw;
   
-
-  color: black;
 }
 
 .Dark[Data-mode="false"] {
@@ -23,20 +37,34 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-
+  min-height: 100vh;
+  min-width: 100vw;
   color: rgb(171, 169, 169);
 }
-
+.Primary-header{
+  height:60px;
+  /* margin: 10px; */
+}
+.container h1{
+  font-size: 1.1em;
+  margin-left: 1px;
+  padding: 15px;
+  text-transform: uppercase;
+}
+.Primary-nav-list{
+display: inline-block;
+}
 
 .search-query {
   display: inline-block;
-  justify-content: center;
+  justify-content: end;
   position: absolute;
-  left: 7%;
+  left: 35%;
+  top: 0;
   margin: 10px;
   border: none;
-  padding: 10px 30px;
-  border-radius: 16px;
+  padding: 7px 1px;
+  border-radius: 6px;
   text-transform: uppercase;
   cursor: pointer;
 
@@ -45,18 +73,20 @@ html {
 
 .submit-btn {
   display: inline-block;
-  position: relative;
-  left: 70%;
-  margin: 10px;
-  padding: 10px 20px;
-  border-radius: 16px;
+  justify-content: end;
+  position: absolute;
+  top:7px;
+  left: 80%;
+  margin: 6px;
+  padding: 7px 9px;
+  border-radius: 6px;
   color: rgb(36, 42, 46);
   background-color: white;
   border: none;
   text-transform: uppercase;
   cursor: pointer;
-  text-decoration: underline;
-  font-size: 16px;
+ 
+  font-size: 10px;
 
 
 }
@@ -91,6 +121,7 @@ html {
 }
 
 .Primary-Section {
+ 
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -98,23 +129,48 @@ html {
   justify-content: center;
   align-items: center;
   margin-inline: 23%;
-  border-radius: 10px;
-  background-color: rgb(78, 75, 75);
-  height: 190px;
-  max-width: 55%;
+  /* border-radius: 10px; */
+  /* background-color: rgb(78, 75, 75); */
+  /* height: 190px;
+  max-width: 55%; */
   font-size: 20px;
-  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+  /* box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
   0 0  0 2px rgb(190, 190, 190),
-  0.3em 0.3em 1em rgba(0,0,0,0.3);
+  0.3em 0.3em 1em rgba(0,0,0,0.3); */
 
 }
+.city-name{
+  margin-top: 20px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.city-name p{
+  padding: 3px;
+}
+.Primary-Row{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 10px;
+    margin-top: 20px;
+    border-bottom: inset;
 
-.Primary-Section>p{
+}
+.Primary-Row p{
   padding: 7px;
+  font-size: 20px;
 }
+/* .Primary-Section>p{
+  padding: 7px;
+} */
 
 .Heading {
-  font-size: 26px;
+  font-size: 20px;
+  text-transform: uppercase;
   text-decoration-line: underline;
   text-underline-offset: 8px;
   display: flex;
@@ -122,56 +178,179 @@ html {
   margin-top: 30px;
   justify-content: center;
 }
-
-
+.Only-Drop{
+  display: none;
+}
+.Recent{
+  display:none;
+}
+/* MEDIA QUERY */
 @media only  screen and (min-width:600px){
 
 .search-query{
-  width: 30%;
-  padding: 20px;
-  /* display: flex; */
+  width: 20%;
+  padding: 15px;
+  border-radius: 3px;
+
   position: absolute;
-  left:0%;
+  left:69%;
 
 
 }
 .submit-btn{
   position: absolute;
-  top:14%;
-  border-radius: 0px;
+top:1;
+margin-inline: 20px;
+background-color:   rgb(171, 169, 169);
+padding: 10px 30px;
+font-size: 15px;
+
+border-radius: 3px;
+  left:91%;
+}
+.submit-btn:hover{
+  background-color:   rgb(91, 90, 90);
+  color: rgb(172, 173, 174);
+
+}
+.Dropdown{
+  padding:15px;
+  background:transparent;
+  color: aliceblue;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: none;
+
+  /* border-bottom: inset; */
+}
+.Dropdown:hover{
+  border-bottom: inset;
+ 
+
+}
+.Only-Drop{
+  display: block;
+  position: absolute;
+  left:89%;
+  top:27px;
+  background: transparent;
+  border:0;
+width: 1rem;
   
-  left:10%;
-}
-.main{
-  font-size: 25px;
+
 }
 
 
+.Only-Drop:hover{
+  scale:2;
+}
 
 
+.Recent{
+  display: flex;
+  flex-direction:column;
 
+  Position:absolute;
+  top:8%;
+  left:70%;
+  width: 20%;
+  background:transparent;
+  border-radius: 3px;
+  backdrop-filter: blur(9rem);
+  background: rgba(0,0,0,0.5);
 
+  height:500px;
+  
+  transition: all 0.9s ease-in;
 
+}
+.Recent[Data-Visible="false"]{
+ display: none;
+}
+.Heading{
+  font-size:29px;
+}
+
+ 
+.city-name{
+  margin-top: 20px;
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.city-name p{
+  padding: 10px;
+}
  .Primary-Section{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 30px;
+  
+}
+.Primary-Row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
   margin-inline: 23%;
-  border-radius: 0px;
-
-  /* background-color: rgb(70, 69, 69); */
-  height: 60px;
-  max-width: 55%;
+  border-bottom: inset; 
   font-size: 25px;
+  height: 60px;
+  min-width: 70%;
   background: transparent;
   backdrop-filter: blur(9rem);
-  border-bottom: inset;
-  box-shadow:none;
-
- }
 
 
+}
+.Primary-Row p{
+  font-size: 22px;
+}
+
+}
+@media only  screen and (max-width:800px){
+  .search-query{
+    width: 25%;
+    padding: 14px;
+    border-radius: 3px;
+    top:1%;
+    position: absolute;
+    left:59%;
+  }
+  .submit-btn{
+    position: absolute;
+  top:1%;
+  margin-inline: 20px;
+  background-color:   rgb(171, 169, 169);
+  padding: 14px 20px;
+  font-size: 15px;
+  
+  border-radius: 3px;
+    left:85%;
+  }
+
+  .Primary-Section{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+margin: 0px;
+    margin-top: 40px;
+      /* margin-inline: 23%; */
+  }
+  .Primary-Row{
+    
+    /* min-width:20%; */
+    height: 60px;
+    padding: 7px;
+
+  }
+  .Primary-Row p{
+    font-size: 26px;
+    padding: 7px;
+  }
 
 }
