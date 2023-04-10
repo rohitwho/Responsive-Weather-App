@@ -10,7 +10,7 @@ html {
 
 
 .Dark {
-  background-image: url("/images/Light-Mode.jpg");
+  background-image: url("/css/images/Light-Mode.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
@@ -21,7 +21,7 @@ html {
 }
 
 .Dark[Data-mode="false"] {
-  background-image: url("/images/Possible-dark.jpg");
+  background-image: url("/css/images/Possible-dark.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
