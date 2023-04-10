@@ -10,7 +10,7 @@ html {
 
 
 .Dark {
-  background-image: url("/css/images/Light-Mode.jpg");
+  background-image: url("https://images.pexels.com/photos/1631677/pexels-photo-1631677.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
@@ -21,13 +21,13 @@ html {
 }
 
 .Dark[Data-mode="false"] {
-  background-image: url("/css/images/Possible-dark.jpg");
+  background-image: url("https://images.pexels.com/photos/7047135/pexels-photo-7047135.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
   min-height: 100vh;
   min-width: 100vw;
-  color: rgb(171, 169, 169);
+  color: rgb(226, 226, 226);
 }
 .Primary-header{
   height:50px;
@@ -265,7 +265,7 @@ width: 1rem;
 .submit-btn{
   margin-inline: 10px;
   left:73%;
-  height:4%;
+  height:5%;
 }
 .Recent{
 display: none;

@@ -5,9 +5,10 @@ var doSum = document.querySelector(".submit-btn");
 
 /////////////////////////////////////////////////////////////////////////////
 const hour = dayjs().hour();
+
 const modeSel = document.querySelector(".Dark");
 var selectMode = modeSel.getAttribute("Data-mode");
-if (hour <= 17) {
+if (hour < 17) {
   modeSel.setAttribute("Data-mode", "true");
 }
 
