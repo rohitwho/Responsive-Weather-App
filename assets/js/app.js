@@ -26,6 +26,9 @@ function hideAgain() {
 var apiKey = "d5cd8cdd4dbe22cb39d5685c1ac0118c";
 
 function getInformation() {
+  document.querySelector(".main").innerHTML = "";
+  document.querySelector(".Heading").innerHTML = "";
+  document.querySelector(".Primary-Section").innerHTML = "";
   let search = document.getElementById("Primary-search").value;
   let city = search;
 
@@ -46,31 +49,14 @@ function getInformation() {
   // Store the updated search history array in local storage
   localStorage.setItem(key, JSON.stringify(searchHistory));
   for (const element of searchHistory){
-    // console.log(element);
+
     const intoThis =  document.getElementById("Show-History");
     let recentSearch = document.createElement("button");
     recentSearch.classList.add("Dropdown");
     recentSearch.textContent = element;
     intoThis.appendChild(recentSearch);
-    // console.log(element);
-    // // console.log(intoThis);
+    
   }
-
-
-  // console.log(intoThis);
-
-  // searchHistory.forEach((element) => {
-   
-  //   let recentSearch = document.createElement("button");
-  //   recentSearch.classList.add("Dropdown");
-  //   recentSearch.textContent = element;
-  //   intoThis.appendChild(recentSearch);
-  //   console.log(recentSearch);
-  // });
-
-  document.querySelector(".main").innerHTML = "";
-  document.querySelector(".Heading").innerHTML = "";
-  document.querySelector(".Primary-Section").innerHTML = "";
 
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
@@ -79,37 +65,31 @@ function getInformation() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+    
       if (data.cod !== 200) {
         alert("Error: " + data.message);
 
-        // return;
+        return;
       } else {
         let currentCity = document.createElement("div");
+        const weatherIcon = data.weather[0].icon;
+        const weatherIconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
+        const iconElement = document.createElement("div");
+        let showThis =  iconElement.innerHTML = `<img src="${ weatherIconUrl}">`;
         currentCity.classList.add("city-name");
-
-        currentCity.innerHTML = `<h1>${data.name} (${showDate})</h1>`;
-
+        currentCity.innerHTML = `<h1>${data.name} (${showDate}) ${showThis} </h1>`;
         let weatherInfo = document.createElement("div");
-
         let tempEl = document.createElement("p");
-
         tempEl.textContent = `Temp: ${Math.floor(data.main.temp)}°C`;
-
         let windEl = document.createElement("p");
-
         windEl.textContent = `Wind: ${Math.floor(data.wind.speed)} m/s`;
-
         let humidityEl = document.createElement("p");
-
         humidityEl.textContent = `Humidity: ${Math.floor(
           data.main.humidity
         )} %`;
-
         let description = document.createElement("p");
-
         description.textContent = ` ${data.weather[0].description}`;
-
+        
         weatherInfo.appendChild(tempEl);
         weatherInfo.appendChild(windEl);
         weatherInfo.appendChild(humidityEl);
@@ -133,16 +113,21 @@ function getInformation() {
       document.querySelector(".Heading").appendChild(heading);
 
       for (var i = 0; i < data.list.length; i++) {
-        // console.log(data.list[i]);
+  
+       
         if (data.list[i].dt_txt.split(" ").pop() === "12:00:00") {
           var createEl = document.createElement("div");
           createEl.className = "Primary-Row";
           createEl.innerHTML += `<p>${data.list[i].dt_txt}</p>`;
-          createEl.innerHTML += `<p>Temp: ${Math.floor(
-            data.list[i].main.temp
-          )}°C</p>`;
+          const weatherIconNew = data.list[i].weather[0].icon;
+          const weatherIconUrl = `http://openweathermap.org/img/w/${weatherIconNew}.png`;
+         const iconElement = document.createElement("div");
+         let showThis =  iconElement.innerHTML = `<img src="${ weatherIconUrl}">`;
+          createEl.innerHTML += `<p>Temp: ${Math.floor(data.list[i].main.temp)}°C</p>${showThis}`;
           createEl.innerHTML += `<p>Humidity: ${data.list[i].main.humidity}%</p>`;
           createEl.innerHTML += `<p>Wind: ${data.list[i].wind.speed} MPH</p>`;
+          
+     
           section0.appendChild(createEl);
          
         }

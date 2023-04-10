@@ -7,18 +7,6 @@ html {
   scroll-behavior: smooth;
   font-family: Helvetica, sans-serif
 }
-/* li.Dropdown{
-  display: flex;
-  justify-content: end;
-  flex-direction: row;
-  align-items: flex-end;
-  text-transform: uppercase;
-
-} */
-/* .Dropdown li{
-  display: flex;
-  justify-content: center;
-} */
 
 
 .Dark {
@@ -42,10 +30,11 @@ html {
   color: rgb(171, 169, 169);
 }
 .Primary-header{
-  height:60px;
-  /* margin: 10px; */
+  height:50px;
+ 
 }
 .container h1{
+ 
   font-size: 1.1em;
   margin-left: 1px;
   padding: 15px;
@@ -57,38 +46,52 @@ display: inline-block;
 
 .search-query {
   display: inline-block;
-  justify-content: end;
+  
   position: absolute;
-  left: 35%;
+  left: 69%;
   top: 0;
   margin: 10px;
+
+  width: 20%;
   border: none;
-  padding: 7px 1px;
+  padding: 10px 1px;
   border-radius: 6px;
   text-transform: uppercase;
+  background-color: rgb(171, 169, 169);
   cursor: pointer;
 
 
 }
 
 .submit-btn {
+  
   display: inline-block;
   justify-content: end;
   position: absolute;
-  top:7px;
-  left: 80%;
-  margin: 6px;
-  padding: 7px 9px;
+  top:0%;
+  left: 90%;
+background-color:   rgb(171, 169, 169);
+padding: 10px 20px;
+font-size: 12px;
+  margin: 10px;
   border-radius: 6px;
-  color: rgb(36, 42, 46);
-  background-color: white;
   border: none;
   text-transform: uppercase;
   cursor: pointer;
- 
-  font-size: 10px;
 
 
+
+}
+.submit-btn:hover{
+  background-color:rgb(91, 90, 90);
+  color: rgb(172, 173, 174);
+
+}
+.city-name img{
+  object-fit: cover;
+  background: transparent;
+  border-radius: 50%;
+  backdrop-filter: blur(4rem);
 }
 
 .main {
@@ -96,28 +99,25 @@ display: inline-block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: xx-large;
+  
   text-underline-position: below;
   border-bottom: 2px solid black;
   border-bottom-style: inset;
-  font-size: 20px;
+ 
 }
 
 .main>div {
   padding: 7px;
 }
 
-.City-name {
-  margin-top: 30px;
-  font-size: 30px;
-}
+
 
 .Extras {
   margin-bottom: 50px;
 }
 .Sections-together{
   height:100%;
-  /* background-color:#0e1728; */
+ 
 }
 
 .Primary-Section {
@@ -125,18 +125,10 @@ display: inline-block;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-  margin-inline: 23%;
-  /* border-radius: 10px; */
-  /* background-color: rgb(78, 75, 75); */
-  /* height: 190px;
-  max-width: 55%; */
-  font-size: 20px;
-  /* box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-  0 0  0 2px rgb(190, 190, 190),
-  0.3em 0.3em 1em rgba(0,0,0,0.3); */
+  backdrop-filter: blur(1rem);
+  
 
 }
 .city-name{
@@ -148,28 +140,28 @@ display: inline-block;
   align-items: center;
 }
 .city-name p{
-  padding: 3px;
+  padding: 4px;
 }
 .Primary-Row{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
     align-items: flex-start;
-    font-size: 10px;
+    border-radius: 5px;
+    
+    /* font-size: 10px; */
     margin-top: 20px;
     border-bottom: inset;
 
 }
 .Primary-Row p{
-  padding: 7px;
+  padding:14px;
   font-size: 20px;
 }
-/* .Primary-Section>p{
-  padding: 7px;
-} */
+
 
 .Heading {
-  font-size: 20px;
+  font-size: 25px;
   text-transform: uppercase;
   text-decoration-line: underline;
   text-underline-offset: 8px;
@@ -178,41 +170,7 @@ display: inline-block;
   margin-top: 30px;
   justify-content: center;
 }
-.Only-Drop{
-  display: none;
-}
-.Recent{
-  display:none;
-}
-/* MEDIA QUERY */
-@media only  screen and (min-width:600px){
 
-.search-query{
-  width: 20%;
-  padding: 15px;
-  border-radius: 3px;
-
-  position: absolute;
-  left:69%;
-
-
-}
-.submit-btn{
-  position: absolute;
-top:1;
-margin-inline: 20px;
-background-color:   rgb(171, 169, 169);
-padding: 10px 30px;
-font-size: 15px;
-
-border-radius: 3px;
-  left:91%;
-}
-.submit-btn:hover{
-  background-color:   rgb(91, 90, 90);
-  color: rgb(172, 173, 174);
-
-}
 .Dropdown{
   padding:15px;
   background:transparent;
@@ -220,8 +178,6 @@ border-radius: 3px;
   text-transform: uppercase;
   font-size: 14px;
   border: none;
-
-  /* border-bottom: inset; */
 }
 .Dropdown:hover{
   border-bottom: inset;
@@ -231,13 +187,11 @@ border-radius: 3px;
 .Only-Drop{
   display: block;
   position: absolute;
-  left:89%;
-  top:27px;
+  left:88%;
+  top:22px;
   background: transparent;
   border:0;
 width: 1rem;
-  
-
 }
 
 
@@ -248,109 +202,91 @@ width: 1rem;
 
 .Recent{
   display: flex;
+  z-index: 1;
   flex-direction:column;
-
   Position:absolute;
-  top:8%;
+  top:6%;
   left:70%;
   width: 20%;
   background:transparent;
   border-radius: 3px;
   backdrop-filter: blur(9rem);
   background: rgba(0,0,0,0.5);
-
   height:500px;
-  
   transition: all 0.9s ease-in;
 
 }
 .Recent[Data-Visible="false"]{
  display: none;
 }
-.Heading{
-  font-size:29px;
+/* MEDIA QUERY */
+@media only  screen and (max-width:1000px){
+.search-query{
+  left:55%;
+  width:30%
 }
-
- 
-.city-name{
-  margin-top: 20px;
-  font-size: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.Only-Drop{
+  left:84%
 }
-.city-name p{
-  padding: 10px;
+.submit-btn{
+  left:87%
 }
- .Primary-Section{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  
-}
-.Primary-Row{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
-  margin-inline: 23%;
-  border-bottom: inset; 
-  font-size: 25px;
-  height: 60px;
-  min-width: 70%;
-  background: transparent;
-  backdrop-filter: blur(9rem);
-
-
-}
-.Primary-Row p{
-  font-size: 22px;
-}
-
 }
 @media only  screen and (max-width:800px){
   .search-query{
-    width: 25%;
-    padding: 14px;
-    border-radius: 3px;
-    top:1%;
-    position: absolute;
-    left:59%;
-  }
-  .submit-btn{
-    position: absolute;
-  top:1%;
-  margin-inline: 20px;
-  background-color:   rgb(171, 169, 169);
-  padding: 14px 20px;
-  font-size: 15px;
-  
-  border-radius: 3px;
-    left:85%;
+    left:45%;
+    height:3%;
+    width:40%;
   }
 
+  .submit-btn{
+    height:5%;
+    margin-inline:10px;
+  }
   .Primary-Section{
-    display: flex;
+    margin-inline:25px;
+    }
+
+}
+@media only  screen and (max-width:600px){
+
+.container h1{
+  display: none;
+}
+.search-query{
+  left:1%;
+  width:70%;
+  height:2%;
+}
+.Only-Drop{
+  left:67%;
+  display:none;
+}
+.submit-btn{
+  margin-inline: 10px;
+  left:73%;
+  height:4%;
+}
+.Recent{
+display: none;
+}
+.Heading{
+  font-size: 20px;
+}
+.Primary-Section {
+ 
+  margin-top: 15px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width:100%;
-margin: 0px;
-    margin-top: 40px;
-      /* margin-inline: 23%; */
-  }
-  .Primary-Row{
-    
-    /* min-width:20%; */
-    height: 60px;
-    padding: 7px;
+}
 
-  }
-  .Primary-Row p{
-    font-size: 26px;
-    padding: 7px;
-  }
+.Primary-Row p{
+  
+  font-size:15px;
+  padding:7px
+}
 
 }
+
