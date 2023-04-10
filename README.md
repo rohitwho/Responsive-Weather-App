@@ -7,7 +7,10 @@
 # Live Url:
 https://rohitwho.github.io/Responsive-Weather-App/
 # Usage
-![2023-04-09 (1)](https://user-images.githubusercontent.com/123782523/230757586-892e44c5-8379-4863-822a-616a2161421f.png)
+![screencapture-rohitwho-github-io-Responsive-Weather-App-2023-04-10-17_36_38](https://user-images.githubusercontent.com/123782523/231005270-5b54ebe7-7478-44e9-8016-099dc3cde482.png)
+
+![2023-04-10 5_45_41 PM](https://user-images.githubusercontent.com/123782523/231005284-0069b09f-40eb-41a2-bfaa-4cc5aa52dd00.png)
+
 # Support
  If you encounter any issues or have questions, please open an issue in the GitHub repository or contact me.
  
