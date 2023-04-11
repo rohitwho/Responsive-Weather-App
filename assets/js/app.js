@@ -24,15 +24,14 @@ function hideAgain() {
 }
 
 ////////////////////////////////////////////////////////
-var apiKey = "d5cd8cdd4dbe22cb39d5685c1ac0118c";
 
-function getInformation() {
-  document.querySelector(".main").innerHTML = "";
-  document.querySelector(".Heading").innerHTML = "";
-  document.querySelector(".Primary-Section").innerHTML = "";
-  let search = document.getElementById("Primary-search").value;
-  let city = search;
+function getRecentCity(event){
+event.preventDefault();
+getInformation(event.target.innerText);
+}
 
+function saveCity(cityName){
+ 
   const key = "searchHistory";
   let searchHistory = JSON.parse(localStorage.getItem(key)) || [];
 
@@ -40,7 +39,7 @@ function getInformation() {
   const maxLimit = 10;
 
   // Add the new search value to the search history array
-  searchHistory.push(search);
+  searchHistory.push(cityName);
 
   // If the search history array exceeds the maximum limit, remove the oldest search value
   if (searchHistory.length > maxLimit) {
@@ -49,18 +48,36 @@ function getInformation() {
 
   // Store the updated search history array in local storage
   localStorage.setItem(key, JSON.stringify(searchHistory));
+  let intoThis =  document.getElementById("Show-History");
+  intoThis.innerHTML = "";
   for (const element of searchHistory){
 
-    const intoThis =  document.getElementById("Show-History");
+    // const intoThis =  document.getElementById("Show-History");
     let recentSearch = document.createElement("button");
     recentSearch.classList.add("Dropdown");
     recentSearch.textContent = element;
     intoThis.appendChild(recentSearch);
+    recentSearch.addEventListener("click",getRecentCity)
     
   }
 
+}
+
+
+
+var apiKey = "d5cd8cdd4dbe22cb39d5685c1ac0118c";
+
+function getInformation(cityName) {
+  document.querySelector(".main").innerHTML = "";
+  document.querySelector(".Heading").innerHTML = "";
+  document.querySelector(".Primary-Section").innerHTML = "";
+
+  // let city = search;
+
+
+  
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
   )
     .then(function (response) {
       return response.json();
@@ -101,7 +118,7 @@ function getInformation() {
     });
 
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric`
   )
     .then(function (response) {
       return response.json();
@@ -110,7 +127,7 @@ function getInformation() {
       document.querySelector(".Heading");
       let heading = document.createElement("div");
 
-      heading.textContent = `5 Day Forecast for :  ${city}`;
+      heading.textContent = `5 Day Forecast for :  ${cityName}`;
       document.querySelector(".Heading").appendChild(heading);
 
       for (var i = 0; i < data.list.length; i++) {
@@ -138,7 +155,11 @@ function getInformation() {
 
 
 }
-doSum.addEventListener("click", getInformation);
+doSum.addEventListener("click",function(){
+  let search = document.getElementById("Primary-search").value;
+  getInformation(search);
+  saveCity(search);
+} );
 
 
 
@@ -192,3 +213,4 @@ doSum.addEventListener("click", getInformation);
 //         console.error("Geolocation is not supported by this browser.");
 //     }
 // }
+// https://calendly.com/fsf-tutor-team/alistair-rowden
